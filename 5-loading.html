@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1069.42529296875, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/5-loading.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+
+    <script>
+      window.onload = () => {
+        document.getElementById('main-container').classList.add('fade-in');  
+      }
+
+      setTimeout(() => {
+        document.getElementById('main-container').classList.add('fade-out');  
+        setTimeout(() => {
+          window.location.href = 'https://electricfishenergy.github.io/6-approved';
+        }, 450);
+      }, 5000);
+    </script>
+  </head>
+  <body oncontextmenu="return false" style="user-select: none; margin: 0">
+    <input type="hidden" id="anPageName" name="page" value="5-loading" />
+    <div class="container-center-horizontal">
+      <div class="x5-loading screen">
+        <div class="overlap-group1" id="main-container">
+          <img class="ef-horizontal-logo" src="img/ef-horizontal-logo-1@2x.png" alt="ef horizontal logo" />
+          <div class="loading overpass-medium-white-89px">
+            <span class="overpass-medium-white-89px">Loading...</span>
+          </div>
+          <div class="rectangle-7"></div>
+          <div class="help-button">
+            <div class="overlap-group">
+              <div class="ellipse-1"></div>
+              <div class="text-9 overpass-bold-white-63-6px"><span class="overpass-bold-white-63-6px">?</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

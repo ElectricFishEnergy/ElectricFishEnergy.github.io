@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1069.42578125, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/10-complete.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+
+    <script>
+      window.onload = () => {
+        document.getElementById('main-container').classList.add('fade-in');  
+      }
+
+      setTimeout(() => {
+        var query_str = window.location.href.split('?')[1];
+        document.getElementById('main-container').classList.add('fade-out');  
+
+        setTimeout(() => {
+          window.location.href = `https://electricfishenergy.github.io/11-summary?${query_str}`;
+        }, 450);
+      }, 5000);
+    </script>
+  </head>
+  <body oncontextmenu="return false" style="user-select: none; margin: 0; background: #0f0a18">
+    <input type="hidden" id="anPageName" name="page" value="10-complete" />
+    <div class="container-center-horizontal" id="main-container">
+      <div class="x10-complete screen" onclick="window.open('11-summary.html', '_self');">
+        <img class="ef-horizontal-logo" src="img/ef-horizontal-logo-2@2x.svg" alt="ef horizontal logo" />
+        <div class="charging-session-complete valign-text-middle">CHARGING SESSION COMPLETE</div>
+        <div class="ok-to-unplug-charger-from-car overpass-normal-white-41-3px">OK TO UNPLUG CHARGER FROM CAR</div>
+        <div class="flex-row">
+          <div class="flex-col">
+            <div class="overlap-group3"><img class="surface1" src="img/surface1@2x.svg" alt="surface1" /></div>
+            <div class="help-button">
+              <div class="overlap-group">
+                <div class="ellipse-1"></div>
+                <div class="text-7 overpass-bold-white-63-6px">?</div>
+              </div>
+            </div>
+          </div>
+          <div class="overlap-group2">
+            <img class="charger-cord" src="img/charger-cord@2x.svg" alt="charger cord" />
+            <div class="group-5">
+              <div class="overlap-group1">
+                <div class="rectangle-9"></div>
+              </div>
+              <img class="flash" src="img/flash@2x.svg" alt="flash" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

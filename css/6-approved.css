@@ -1,0 +1,78 @@
+/* screen - 6-approved */
+
+.x6-approved {
+  align-items: flex-start;
+  background: linear-gradient(180deg, rgb(108, 69, 229) 0%, rgb(180.3, 8.42, 183.81) 100%);
+  background-color: rgba(255,255,255,1.0);
+  border: 0.41px none;
+  display: flex;
+  height: 1920px;
+  overflow: hidden;
+  width: 1069.42px;
+}
+
+.x6-approved .overlap-group1 {
+  align-items: center;
+  background: linear-gradient(180deg, rgb(108, 69, 229) 0%, rgb(180.3, 8.42, 183.81) 100%);
+  display: flex;
+  flex-direction: column;
+  margin-left: -1px;
+  margin-top: 0;
+  min-height: 1920px;
+  padding: 64.8px 69.3px;
+  width: 1080px;
+}
+
+.x6-approved .checkmark-1 {
+  height: 262px;
+  margin-left: 7.01px;
+  margin-top: 623px;
+  width: 262px;
+}
+
+.x6-approved .approved {
+  letter-spacing: 0;
+  line-height: 47.5px;
+  margin-left: 0.46px;
+  margin-top: 165px;
+  min-height: 85px;
+  text-align: center;
+  width: 570px;
+}
+
+.x6-approved .help-button {
+  align-items: flex-start;
+  align-self: flex-start;
+  border: 3.21px none;
+  display: flex;
+  height: 107px;
+  margin-top: 528px;
+  min-width: 167px;
+}
+
+.x6-approved .overlap-group {
+  height: 110px;
+  margin-top: -3.21px;
+  position: relative;
+  width: 167px;
+}
+
+.x6-approved .ellipse-1 {
+  background-color: var(--purple-heart);
+  border: 1.33px none;
+  border-radius: 53.64px;
+  height: 107px;
+  left: 30px;
+  position: absolute;
+  top: 3px;
+  width: 107px;
+}
+
+.x6-approved .text-10 {
+  left: 0;
+  letter-spacing: 2.86px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 167px;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1069.42529296875, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/4-card-reader.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+
+    <script>
+      window.onload = () => {
+        document.getElementById('main-container').classList.add('fade-in');  
+      }
+
+      const start_payment = () => {
+        ws_connection.send({
+            responseType: "RESPONSE_OK",
+            type: "REQ_START_SESSION"
+        });
+      }
+
+      const try_again = () => {
+        document.getElementById('std-message').hidden = false;
+        document.getElementById('arrow').hidden = false;
+        document.getElementById('payment-failed-message').hidden = true;
+
+        start_payment();
+      }
+
+      const hide_popup = () => {
+        document.getElementById('pop-up-message').classList.remove('show')
+      }
+
+      ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
+      ws_connection.onmessage = (event) => {
+        console.log(event);
+        if(event.data == 'ECMS_TIMEOUT')
+        {
+            console.log(event.data)
+            window.location.href = 'https://electricfishenergy.github.io/12-out_of_service';
+        }
+        else if(event.data == 'SESSION_STARTED')
+        {
+            document.getElementById('pop-up-message').classList.add('show');
+        }
+        else if(event.data == 'PAYMENT_OK')
+        {
+          document.getElementById('main-container').classList.add('fade-out');
+          document.getElementById('pop-up-message').classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = 'https://electricfishenergy.github.io/5-loading';
+          }, 450);
+        }
+        else if(event.data == 'PAYMENT_FAILED')
+        {
+          document.getElementById('std-message').hidden = true;
+          document.getElementById('arrow').hidden = true;
+          document.getElementById('payment-failed-message').hidden = false;
+          //console.log('payment failed!')
+        }
+        else if(event.data == 'ERROR_GENERAL')
+        {
+          window.location.href = 'https://electricfishenergy.github.io/error';
+        }
+      };
+    </script>
+  </head>
+  <body oncontextmenu="return false" style="user-select: none; margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="4-card-reader" />
+    <div class="container-center-horizontal">
+      <div class="x4-card-reader screen">
+        <div class="overlap-group1" id="main-container">
+          <img
+            class="ef-horizontal-logo-black-1"
+            src="img/ef-horizontal-logo--black--1-2@2x.png"
+            alt="EF horizontal logo (black) 1"
+          />
+          <div class="overlap-group" onclick="try_again()">
+            <div class="price valign-text-middle overpass-light-purple-heart-166-5px">
+              <span><span class="overpass-light-purple-heart-166-5px">$10</span> </span>
+            </div>
+            <div class="fast-charging-session barlow-light-cinder-46-1px">
+              <span class="barlow-light-cinder-46-1px">Fast Charging Session</span>
+            </div>
+          </div>
+          <div class="overlap-group2" id="pop-up-message">
+            <div class="close-button" onclick="hide_popup()"><img class="icon-close" src="img/close-1@2x.png" alt="icon-close" /></div>
+            <div class="pop-up-text-container overpass-light-black-64-1px" id="std-message">
+              <span class="overpass-light-black-64-1px">use card reader to complete payment</span>
+            </div>
+            <div class="pop-up-text-container" id="payment-failed-message" hidden>
+              <div>
+                <span class="overpass-light-black-64-1px">Payment failed!</span>
+              </div>
+              <div class="try-again-btn barlow-light-cinder-46-1px" onclick="try_again()">
+                <span>Try again</div>
+              </div>
+              <img id="arrow" class="group" src="img/group-1@2x.png" alt="Group" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

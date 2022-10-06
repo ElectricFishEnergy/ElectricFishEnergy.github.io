@@ -1,0 +1,101 @@
+:root { 
+  --abbey: #4f4d56;
+  --black: #000000;
+  --chicago: #575757;
+  --cinder: #0f0a18;
+  --ebony: #140c22;
+  --purple-heart: #6c45e5;
+  --screamin-green: #79f18c;
+  --white: #ffffff;
+ 
+  --font-size-l: 41.3px;
+  --font-size-m: 17.5px;
+  --font-size-xl: 46.1px;
+  --font-size-xxl: 46.7px;
+  --font-size-xxxl: 57.8px;
+  --font-size-xxxxl: 63.6px;
+  --font-size-xxxxxl: 64.1px;
+ 
+  --font-family-barlow: "Barlow", Helvetica;
+  --font-family-overpass: "Overpass", Helvetica;
+}
+.overpass-bold-white-63-6px {
+  color: var(--white);
+  font-family: var(--font-family-overpass);
+  font-size: var(--font-size-xxxxl);
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.overpass-normal-chicago-17-5px {
+  color: var(--chicago);
+  font-family: var(--font-family-overpass);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.overpass-light-black-46-7px {
+  color: var(--black);
+  font-family: var(--font-family-overpass);
+  font-size: var(--font-size-xxl);
+  font-style: normal;
+  font-weight: 300;
+}
+
+.overpass-light-purple-heart-166-5px {
+  color: var(--purple-heart);
+  font-family: var(--font-family-overpass);
+  font-size: 166.5px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.barlow-light-cinder-46-1px {
+  color: var(--cinder);
+  font-family: var(--font-family-barlow);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 300;
+}
+
+.overpass-medium-white-89px {
+  color: var(--white);
+  font-family: var(--font-family-overpass);
+  font-size: 89px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.overpass-medium-white-57-8px {
+  color: var(--white);
+  font-family: var(--font-family-overpass);
+  font-size: var(--font-size-xxxl);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.overpass-normal-chicago-15-6px {
+  color: var(--chicago);
+  font-family: var(--font-family-overpass);
+  font-size: 15.6px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.overpass-light-black-64-1px {
+  color: var(--black);
+  font-family: var(--font-family-overpass);
+  font-size: var(--font-size-xxxxxl);
+  font-style: normal;
+  font-weight: 300;
+}
+
+.overpass-normal-white-41-3px {
+  color: var(--white);
+  font-family: var(--font-family-overpass);
+  font-size: var(--font-size-l);
+  font-style: normal;
+  font-weight: 400;
+}

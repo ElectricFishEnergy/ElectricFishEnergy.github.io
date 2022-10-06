@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1080, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/1-home.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <script>
+      window.onload = () => {
+        document.getElementById('main-container').classList.add('fade-in');  
+      }
+
+      const redirect_to_pricing = () => {
+        document.getElementById('main-container').classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = 'https://electricfishenergy.github.io/4-card-reader';
+        }, 450);
+      }
+    </script>
+  </head>
+  <body onclick="redirect_to_pricing()" oncontextmenu="return false" style="user-select: none; margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="1-home" />
+    <div class="container-center-horizontal">
+      <div class="x1-home screen">
+        <div class="x1-home-1">
+          <div class="overlap-group1" id="main-container">
+            <div class="ef-logo"></div>
+            <div class="tap-to-start">
+              <div class="overlap-group">
+                <div class="tap-to-start-1"><span>TAP TO START</span></div>
+                <div class="rectangle-5"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

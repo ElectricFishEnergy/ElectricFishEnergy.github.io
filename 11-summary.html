@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1069.4248046875, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/11-summary.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+
+    <script src="js/VirtualKeyboard.js"></script>
+  </head>
+  <body oncontextmenu="return false" style="user-select: none; margin: 0">
+    <input type="hidden" id="anPageName" name="page" value="11-summary" />
+    <div class="container-center-horizontal" id="main-container">
+      <div class="x11-summary screen">
+        <img class="ef-horizontal-logo" src="img/ef-horizontal-logo-1@2x.svg" alt="ef horizontal logo" />
+        <div class="group-6" id="soc-container">
+          <div class="overlap-group2">
+            <div class="rectangle-6"></div>
+            <div class="rectangle-7" id="soc-rectangle"></div>
+            <div class="percent valign-text-middle"><a id="soc">50</a>%</div>
+          </div>
+        </div>
+        <div class="flex-row" id="summary-container">
+          <div class="flex-col">
+            <div class="estimated-range overpass-normal-chicago-17-5px">ESTIMATED RANGE</div>
+            <div class="address overpass-light-black-46-7px">124 mi</div>
+            <div class="overlap-group">
+              <div class="current-power overpass-normal-chicago-17-5px">CURRENT POWER</div>
+              <div class="x6000-k-w overpass-light-black-46-7px">00.00 kW</div>
+            </div>
+            <div class="overlap-group7">
+              <div class="amount-dispensed overpass-normal-chicago-17-5px">AMOUNT DISPENSED</div>
+              <div class="x2000-k-wh overpass-light-black-46-7px"><span id="energy">00.00</span> kWh</div>
+            </div>
+            <div class="overlap-group">
+              <div class="total-cost overpass-normal-chicago-17-5px">TOTAL COST</div>
+              <div class="price overpass-light-black-46-7px">$<span id="cost">10.00</span></div>
+            </div>
+          </div>
+          <div class="flex-col-1">
+            <div class="overlap-group6">
+              <div class="text-5 valign-text-middle"><span id="time-elapsed">00:00</span></div>
+              <div class="text-6 valign-text-middle">0:00</div>
+              <img class="mask-group" src="img/mask-group-1@2x.svg" alt="Mask Group" />
+              <div class="time-elapsed valign-text-middle overpass-normal-chicago-17-5px">TIME ELAPSED</div>
+            </div>
+            <div class="est-time-remaining valign-text-middle overpass-normal-chicago-15-6px">EST. TIME REMAINING</div>
+            <div class="overlap-group5">
+              <div class="x-group">
+                <div class="ellipse-2"></div>
+                <div class="ellipse-4"></div>
+                <img class="x-group" src="img/mask-group-2@2x.svg" alt="Mask Group" />
+                <div class="x100g valign-text-middle">100g</div>
+              </div>
+              <div class="co2-saved valign-text-middle overpass-normal-chicago-15-6px">CO2 SAVED</div>
+            </div>
+          </div>
+        </div>
+        <div class="would-you-like-a-receipt overpass-light-black-64-1px" id="receipt-prompt">WOULD YOU LIKE A RECEIPT?</div>
+        <!-- <div class="overlap-group4"  onclick="show_keyboard()"><div class="nameemailcom">NAME@EMAIL.COM</div></div> -->
+        <input data-virtual-element type="email" class="overlap-group4 nameemailcom" id="email-placeholder" name="email" placeholder="NAME@EMAIL.COM" onclick="show_keyboard()">
+        <div id="buttons"><span class="email-form-button" id="home-btn" onclick="window.location.href = 'https://electricfishenergy.github.io/1-home'">HOME</span></div>
+        <!-- <div id="input-group"></div> -->
+        <div id="tabular-virtual-keyboard"></div>
+        <div class="help-button">
+          <div class="overlap-group-1" hidden>
+            <div class="ellipse-1"></div>
+            <div class="text-4 overpass-bold-white-63-6px">?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var keyboard_initialized = false;
+
+      const send_receipt = () => {
+        var email = document.getElementById('email-placeholder').value.toLowerCase();
+        ws_connection.send(JSON.stringify({
+            responseType: 'RESPONSE_OK',
+            type: 'EMAIL_FOR_RECEIPT',
+            data: {
+                email: email
+            }
+        }));
+
+        
+        document.getElementById('summary-container').classList.remove('hidden');
+        document.getElementById('soc-container').classList.remove('hidden');
+
+        document.getElementById('receipt-prompt').classList.remove('hidden');
+        document.getElementById('receipt-prompt').innerHTML = `THANK YOU! RECEIPT WILL BE SENT TO ${email.toUpperCase()}.<br>TOUCH ANYWHERE TO GO BACK.`;
+
+        document.getElementById('email-placeholder').classList.remove('raise');
+        document.getElementById('email-placeholder').type = 'hidden';
+        
+        document.getElementById('buttons').classList.add('hidden');
+
+        document.getElementById('tabular-virtual-keyboard').classList.remove('raise');
+        document.getElementById('tabular-virtual-keyboard').classList.add('hidden');
+
+        setTimeout(() => {
+          document.getElementById('main-container').onclick = () => { window.location.href = 'https://electricfishenergy.github.io/1-home'; };
+        }, 500);
+    };
+
+    const cancel_receipt = () => {
+      
+      document.getElementById('tabular-virtual-keyboard').innerHTML = '';
+      keyboard_initialized = false;
+
+      document.getElementById('summary-container').classList.remove('hidden');
+      document.getElementById('soc-container').classList.remove('hidden');
+
+      document.getElementById('receipt-prompt').classList.remove('hidden');
+
+      document.getElementById('email-placeholder').classList.remove('raise');
+      
+      //document.getElementById('buttons').classList.add('hidden');
+      document.getElementById('buttons').innerHTML = '<span class="email-form-button" id="home-btn" onclick="window.location.href = `https://electricfishenergy.github.io/1-home`">HOME</span>'
+      
+      document.getElementById('tabular-virtual-keyboard').classList.remove('raise');
+      //document.getElementById('tabular-virtual-keyboard').classList.add('hidden');
+    }
+
+      const show_keyboard = () => {
+        if (!keyboard_initialized)
+        {
+          document.getElementById('summary-container').classList.add('hidden');
+          document.getElementById('soc-container').classList.add('hidden');
+          document.getElementById('receipt-prompt').classList.add('hidden');
+          document.getElementById('email-placeholder').classList.add('raise');
+          document.getElementById('tabular-virtual-keyboard').classList.add('raise');
+          document.getElementById('buttons').innerHTML = '<span id="cancel-btn" onclick="cancel_receipt()" class="email-form-button">CANCEL</span><span id="send-btn" onclick="send_receipt()" class="email-form-button">SEND</span>';
+  
+          VirtualKeyboard.init({targetId: 'tabular-virtual-keyboard', defaultLanguage: 'en', inputSelector: '[data-virtual-element]', uppercase: true});
+
+          keyboard_initialized = true;
+        }
+      }
+      window.onload = () => {
+        ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
+
+        document.getElementById('main-container').classList.add('fade-in');
+        query_params = new URLSearchParams(window.location.href.split('?')[1]);
+
+        for (const [key, value] of query_params) {
+          //console.log(key, value);
+          document.getElementById(key).innerHTML = value;
+        }
+
+        soc_rect_width = (query_params.get('soc') / 100) * 842;
+        document.getElementById('soc-rectangle').style = `width: ${soc_rect_width}px;`
+      }
+    </script>
+  </body>
+</html>

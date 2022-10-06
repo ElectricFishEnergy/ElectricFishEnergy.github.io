@@ -1,0 +1,166 @@
+/* screen - 10-complete */
+
+.x10-complete {
+  align-items: flex-start;
+  background-color: var(--cinder);
+  border: 0.41px none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 1920px;
+  padding: 63.5px 68.1px;
+  width: 1080px;
+}
+
+.x10-complete .ef-horizontal-logo {
+  height: 53px;
+  margin-left: 29.71px;
+  width: 403px;
+}
+
+.x10-complete .charging-session-complete {
+  align-self: flex-end;
+  color: var(--screamin-green);
+  font-family: var(--font-family-overpass);
+  font-size: var(--font-size-xxxl);
+  font-weight: 500;
+  height: 89px;
+  letter-spacing: 0.58px;
+  margin-right: 4.11px;
+  margin-top: 635px;
+  text-align: center;
+  width: 890px;
+}
+
+.x10-complete .ok-to-unplug-charger-from-car {
+  align-self: flex-end;
+  letter-spacing: 0;
+  margin-right: 4.11px;
+  margin-top: 52px;
+  min-height: 89px;
+  text-align: center;
+  width: 890px;
+}
+
+.x10-complete .flex-row {
+  align-items: flex-start;
+  display: flex;
+  height: 797px;
+  margin-top: 89px;
+  min-width: 859px;
+}
+
+.x10-complete .flex-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 797px;
+  width: 296px;
+}
+
+.x10-complete .overlap-group3 {
+  align-items: flex-end;
+  align-self: flex-end;
+  background-image: url(../img/car-2@2x.svg);
+  background-size: 100% 100%;
+  display: flex;
+  height: 262px;
+  min-width: 262px;
+  padding: 80.6px 6.0px;
+}
+
+.x10-complete .surface1 {
+  height: 99px;
+  width: 248px;
+}
+
+.x10-complete .help-button {
+  align-items: flex-start;
+  border: 3.21px none;
+  display: flex;
+  height: 107px;
+  margin-top: 428px;
+  min-width: 167px;
+}
+
+.x10-complete .overlap-group {
+  height: 110px;
+  margin-top: -3.21px;
+  position: relative;
+  width: 167px;
+}
+
+.x10-complete .ellipse-1 {
+  background-color: var(--purple-heart);
+  border: 1.33px none;
+  border-radius: 53.64px;
+  height: 107px;
+  left: 30px;
+  position: absolute;
+  top: 3px;
+  width: 107px;
+}
+
+.x10-complete .text-7 {
+  left: 0;
+  letter-spacing: 2.86px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 167px;
+}
+
+.x10-complete .overlap-group2 {
+  height: 246px;
+  margin-left: 13px;
+  margin-top: 79.0px;
+  position: relative;
+  width: 550px;
+}
+
+.x10-complete .charger-cord {
+  height: 129px;
+  left: 0;
+  position: absolute;
+  top: 7px;
+  width: 179px;
+}
+
+.x10-complete .group-5 {
+  align-items: center;
+  border: 5.5px solid;
+  border-color: var(--white);
+  box-shadow: 0px 3.67px 3.67px #6c45e5;
+  display: flex;
+  height: 246px;
+  left: 176px;
+  min-width: 374px;
+  padding: 24.8px 22.0px;
+  position: absolute;
+  top: 0;
+}
+
+.x10-complete .overlap-group1 {
+  align-items: flex-start;
+  align-self: flex-end;
+  border: 5.5px solid;
+  border-color: var(--white);
+  display: flex;
+  height: 196px;
+  min-width: 132px;
+  padding: 10.1px 11.9px;
+}
+
+.x10-complete .rectangle-9 {
+  border: 2.75px solid;
+  border-color: var(--white);
+  height: 60px;
+  width: 97px;
+}
+
+.x10-complete .flash {
+  height: 142px;
+  margin-bottom: 11.92px;
+  margin-left: 44px;
+  width: 142px;
+}

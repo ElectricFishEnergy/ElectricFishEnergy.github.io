@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1069.42578125, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/9-progress.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+
+    <script>
+      window.onload = () => {
+        document.getElementById('main-container').classList.add('fade-in');  
+      }
+
+      setInterval(() => {
+        var [minutes, seconds] = document.getElementById('time-elapsed').innerHTML.split(':');
+        
+        if (++seconds >= 60)
+        {
+          seconds = 0;
+          minutes++;
+        }
+
+        document.getElementById('time-elapsed').innerHTML = `${minutes}:${((seconds >= 10) ? '' : '0') + seconds}`;
+      }, 1000);
+
+      const stop = () => {
+        ws_connection.send('UI_SESSION_STOPPED');
+
+        document.getElementById('main-container').classList.add('fade-out');  
+
+        setTimeout(() => {
+          window.location.href = 'https://electricfishenergy.github.io/10-complete?' + 
+                                  'energy='         + data['energy'] + 
+                                  '&soc='           + data['soc']    +
+                                  '&cost='          + data['cost'] +
+                                  '&time-elapsed='  + document.getElementById('time-elapsed').innerHTML;
+        }, 450);
+      }
+
+      ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
+      ws_connection.onmessage = (event) => {
+        data = JSON.parse(event.data);
+
+        console.log(data);
+        
+        if(event.data == 'ERROR_GENERAL')
+        {
+          window.location.href = 'https://electricfishenergy.github.io/error';
+        }
+        else if (data.finished)
+        {
+          stop();
+        }
+
+        else
+        {
+          // power, soc, amount, timer
+          for (const key in data) {
+            document.getElementById(key).innerHTML = data[key];
+          }
+
+          soc_rect_width = (data['soc'] / 100) * 842;
+          document.getElementById('soc-rectangle').style = `width: ${soc_rect_width}px;`
+        }
+      }
+    </script>
+  </head>
+  <body oncontextmenu="return false" style="user-select: none; margin: 0">
+    <input type="hidden" id="anPageName" name="page" value="9-progress" />
+    <div hidden id="finished"></div>
+    <div class="container-center-horizontal" id="main-container">
+      <div class="x9-progress screen">
+        <img class="ef-horizontal-logo" src="img/ef-horizontal-logo@2x.svg" alt="ef horizontal logo" />
+        <div class="overlap-group3">
+          <div class="group-6">
+            <div class="rectangle-7" id="soc-rectangle"></div>
+          </div>
+          <div class="percent valign-text-middle"><a id="soc">0</a>%</div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-col">
+            <div class="address overpass-light-black-46-7px"><span id="est-range">0</span> mi</div>
+            <div class="flex-col-item overpass-normal-chicago-17-5px">ESTIMATED RANGE</div>
+            <div class="x6000-k-w overpass-light-black-46-7px"><span id="power">00.00</span> kW</div>
+            <div class="flex-col-item overpass-normal-chicago-17-5px">CURRENT POWER</div>
+          </div>
+          <div class="flex-col-1">
+            <div class="x2000-k-wh overpass-light-black-46-7px"><span id="energy">00.00</span> kWh</div>
+            <div class="amount-dispensed overpass-normal-chicago-17-5px">AMOUNT DISPENSED</div>
+            <div class="price overpass-light-black-46-7px">$<span id="cost">00.00</span></div>
+            <div class="total-cost overpass-normal-chicago-17-5px">TOTAL COST</div>
+          </div>
+          <div class="flex-col-2">
+            <div class="overlap-group4">
+              <div class="text-2 valign-text-middle"><span id="time-elapsed">0:00</span></div>
+              <div class="text-3 valign-text-middle"><span id="time-rem">0:00</span></div>
+              <img class="mask-group" src="img/mask-group@2x.svg" alt="Mask Group" />
+              <div class="time-elapsed valign-text-middle overpass-normal-chicago-17-5px">TIME ELAPSED</div>
+            </div>
+            <div class="est-time-remaining valign-text-middle overpass-normal-chicago-15-6px">EST. TIME REMAINING</div>
+          </div>
+        </div>
+        <div class="group-8">
+          <div class="overlap-group1" onclick="stop()">
+            <div class="pause-charging valign-text-middle">PAUSE CHARGING</div>
+          </div>
+        </div>
+        <div class="help-button">
+          <div class="overlap-group">
+            <div class="ellipse-1"></div>
+            <div class="text-1 overpass-bold-white-63-6px">?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

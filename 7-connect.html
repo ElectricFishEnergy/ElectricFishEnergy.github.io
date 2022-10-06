@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1069.42578125, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/7-connect.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+
+    <script>
+      window.onload = () => {
+        document.getElementById('main-container').classList.add('fade-in');  
+      }
+
+      ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
+      ws_connection.onmessage = (event) => {
+        // console.log(event);
+        if(event.data == 'CAR_PLUGGED')
+        {
+          document.getElementById('main-container').classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = 'https://electricfishenergy.github.io/8-charging';
+          }, 450);
+        }
+        else if(event.data == 'ERROR_GENERAL')
+        {
+          window.location.href = 'https://electricfishenergy.github.io/error';
+        }
+      };
+
+      setTimeout(() => {
+        if(window.location.href.endsWith('7-connect'))
+        {
+          ws_connection.send('UI_TIMEOUT');
+          console.log('session timed out. money will be refunded')
+
+          setTimeout(() => {
+            window.location.href = 'https://electricfishenergy.github.io/1-home'
+          }, 300000);
+        }
+      }, 10000)
+    </script>
+  </head>
+  <body oncontextmenu="return false" style="user-select: none; margin: 0; background: #0f0a18">
+    <input type="hidden" id="anPageName" name="page" value="7-connect" />
+    <div class="container-center-horizontal">
+      <div class="x7-connect screen" id="main-container">
+        <div class="connect-car-to-charger valign-text-middle overpass-medium-white-57-8px">
+          <span><span class="overpass-medium-white-57-8px">connect car to charger</span> </span>
+        </div>
+        <div class="ensure-car-is-turned-off overpass-normal-white-41-3px">
+          <span class="overpass-normal-white-41-3px">ensure car is turned off</span>
+        </div>
+        <div class="flex-row">
+          <div class="flex-col">
+            <div class="overlap-group2"><img class="surface1" src="img/surface1-1@2x.png" alt="surface1" /></div>
+            <div class="help-button">
+              <div class="overlap-group">
+                <div class="ellipse-1"></div>
+                <div class="text-11 overpass-bold-white-63-6px"><span class="overpass-bold-white-63-6px">?</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="overlap-group3">
+            <img class="charger-cord" src="img/charger-cord-1@2x.png" alt="charger cord" />
+            <div class="group-5">
+              <div class="overlap-group1">
+                <div class="rectangle-9"></div>
+              </div>
+              <img class="flash" src="img/flash-1@2x.png" alt="flash" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

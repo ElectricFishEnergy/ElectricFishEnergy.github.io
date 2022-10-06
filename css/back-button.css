@@ -1,0 +1,41 @@
+/* screen - back-button */
+
+.back-button {
+  align-items: flex-start;
+  background-color: var(--purple-heart);
+  border: 1.58px none;
+  display: flex;
+  height: 88.18px;
+  min-width: 297px;
+  padding: 17.3px 37.8px;
+}
+
+.back-button .back-1 {
+  height: 38px;
+  margin-top: 7.56px;
+  object-fit: cover;
+  width: 38px;
+}
+
+.back-button .go-back {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(224.47, 214.63, 255) 100%);
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-family-overpass);
+  font-size: 37.8px;
+  font-weight: 400;
+  height: 50px;
+  letter-spacing: 0.76px;
+  line-height: 50.5px;
+  margin-left: 8px;
+  text-align: center;
+  text-fill-color: transparent;
+  white-space: nowrap;
+  width: 175px;
+}
+
+.back-button .spanj88jl {
+  color: var(--black);
+}

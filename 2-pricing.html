@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1080, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/2-pricing.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+
+    <script>
+      const redirect_to_card_reader = () => {
+        window.location.href = 'https://electricfishenergy.github.io/4-card-reader';
+      }
+
+      const help = () => {
+          console.log('help button pressed.');
+      }
+
+      ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
+      ws_connection.onmessage = (event) => {
+        console.log(event);
+        if(event.data == 'SESSION_STARTED')
+        {
+            document.getElementById('body').removeAttribute('hidden');
+        }
+        else if(event.data == 'ECMS_TIMEOUT')
+        {
+            console.log(event.data)
+            window.location.href = 'https://electricfishenergy.github.io/12-out_of_service';
+        }
+        else if(event.data == 'ERROR_GENERAL')
+        {
+            window.location.href = 'https://electricfishenergy.github.io/error';
+        }
+      };
+
+      setTimeout(() => {
+        if (window.location.href.endsWith('2-pricing'))
+        {
+          window.location.href = 'https://electricfishenergy.github.io/1-home'
+        }
+      }, 30000)
+  </script>
+  </head>
+  <body id="body" style="user-select: none; margin: 0; background: #ffffff" oncontextmenu="return false" hidden>
+    <input type="hidden" id="anPageName" name="page" value="2-pricing" />
+    <div class="container-center-horizontal">
+      <div class="x2-pricing screen">
+        <div class="overlap-group2">
+          <img
+            class="ef-horizontal-logo-black-1"
+            src="img/ef-horizontal-logo--black--1-1@2x.png"
+            alt="EF horizontal logo (black) 1"
+          />
+          <div class="overlap-group1" onclick="redirect_to_card_reader()">
+            <h1 class="price valign-text-middle overpass-light-purple-heart-166-5px">
+              <span><span class="overpass-light-purple-heart-166-5px">$10</span> </span>
+            </h1>
+            <div class="fast-charging-session barlow-light-cinder-46-1px">
+              <span class="barlow-light-cinder-46-1px">Fast Charging Session</span>
+            </div>
+          </div>
+          <div class="help-button">
+            <div class="overlap-group">
+              <div class="ellipse-1"></div>
+              <div class="text-8" onclick="help()"><span>?</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

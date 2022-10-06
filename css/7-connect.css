@@ -1,0 +1,156 @@
+/* screen - 7-connect */
+
+.x7-connect {
+  align-items: flex-end;
+  background-color: var(--cinder);
+  border: 0.41px none;
+  display: flex;
+  flex-direction: column;
+  height: 1920px;
+  padding: 64.8px 68.1px;
+  width: 1080px;
+}
+
+.x7-connect .connect-car-to-charger {
+  height: 89px;
+  letter-spacing: 0.58px;
+  margin-right: 4.11px;
+  margin-top: 655px;
+  text-align: center;
+  width: 890px;
+}
+
+.x7-connect .ensure-car-is-turned-off {
+  letter-spacing: 0;
+  margin-right: 4.11px;
+  margin-top: 52px;
+  min-height: 89px;
+  text-align: center;
+  width: 890px;
+}
+
+.x7-connect .flex-row {
+  align-items: flex-start;
+  align-self: flex-start;
+  display: flex;
+  height: 797px;
+  margin-top: 89px;
+  min-width: 859px;
+}
+
+.x7-connect .flex-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 797px;
+  width: 296px;
+}
+
+.x7-connect .overlap-group2 {
+  align-items: flex-end;
+  align-self: flex-end;
+  background-image: url(../img/car-2-1@2x.png);
+  background-size: 100% 100%;
+  display: flex;
+  height: 262px;
+  min-width: 262px;
+  padding: 80.6px 6.0px;
+}
+
+.x7-connect .surface1 {
+  height: 99px;
+  width: 248px;
+}
+
+.x7-connect .help-button {
+  align-items: flex-start;
+  border: 3.21px none;
+  display: flex;
+  height: 107px;
+  margin-top: 428px;
+  min-width: 167px;
+}
+
+.x7-connect .overlap-group {
+  height: 110px;
+  margin-top: -3.21px;
+  position: relative;
+  width: 167px;
+}
+
+.x7-connect .ellipse-1 {
+  background-color: var(--purple-heart);
+  border: 1.33px none;
+  border-radius: 53.64px;
+  height: 107px;
+  left: 30px;
+  position: absolute;
+  top: 3px;
+  width: 107px;
+}
+
+.x7-connect .text-11 {
+  left: 0;
+  letter-spacing: 2.86px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 167px;
+}
+
+.x7-connect .overlap-group3 {
+  height: 246px;
+  margin-left: 13px;
+  margin-top: 79.0px;
+  position: relative;
+  width: 550px;
+}
+
+.x7-connect .charger-cord {
+  height: 126px;
+  left: 0;
+  position: absolute;
+  top: 7px;
+  width: 176px;
+}
+
+.x7-connect .group-5 {
+  align-items: center;
+  border: 5.5px solid;
+  border-color: var(--white);
+  box-shadow: inset 3.67px 3.67px 3.67px #6c45e5;
+  display: flex;
+  height: 246px;
+  left: 176px;
+  min-width: 374px;
+  padding: 24.8px 22.0px;
+  position: absolute;
+  top: 0;
+}
+
+.x7-connect .overlap-group1 {
+  align-items: flex-start;
+  align-self: flex-end;
+  border: 5.5px solid;
+  border-color: var(--white);
+  box-shadow: inset 3.67px 3.67px 3.67px #6c45e5;
+  display: flex;
+  height: 196px;
+  min-width: 132px;
+  padding: 10.1px 11.9px;
+}
+
+.x7-connect .rectangle-9 {
+  border: 2.75px solid;
+  border-color: var(--white);
+  box-shadow: inset 3.67px 3.67px 3.67px #6c45e5;
+  height: 60px;
+  width: 97px;
+}
+
+.x7-connect .flash {
+  height: 142px;
+  margin-bottom: 11.92px;
+  margin-left: 44px;
+  width: 142px;
+}

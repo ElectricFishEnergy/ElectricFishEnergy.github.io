@@ -1,0 +1,107 @@
+/* screen - 2-pricing */
+
+.x2-pricing {
+  align-items: flex-start;
+  background-color: var(--white);
+  border: 1px none;
+  display: flex;
+  height: 1920px;
+  overflow: hidden;
+  width: 1080px;
+}
+
+.x2-pricing .overlap-group2 {
+  align-items: flex-start;
+  background: linear-gradient(180deg, rgb(255, 255, 255) 18.75%, rgb(224, 215, 255) 98.96%);
+  display: flex;
+  flex-direction: column;
+  margin-left: -3px;
+  min-height: 1920px;
+  padding: 65.4px 60.4px;
+  width: 1081px;
+}
+
+.x2-pricing .ef-horizontal-logo-black-1 {
+  height: 53px;
+  margin-top: 3px;
+  object-fit: cover;
+  width: 407px;
+}
+
+.x2-pricing .overlap-group1 {
+  align-items: flex-start;
+  align-self: center;
+  border: 0.42px solid;
+  border-color: var(--abbey);
+  border-radius: 12.48px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.25px;
+  margin-top: 645px;
+  min-height: 447px;
+  padding: 43.6px 47.4px;
+  width: 507px;
+}
+
+.x2-pricing .price {
+  -webkit-text-stroke: 1.16px var(--abbey);
+  align-self: center;
+  height: 197px;
+  letter-spacing: 0;
+  line-height: 74.0px;
+  margin-right: 3.63px;
+  margin-top: 21px;
+  text-align: center;
+  width: 339px;
+}
+
+.x2-pricing .fast-charging-session {
+  -webkit-text-stroke: 0.96px var(--abbey);
+  letter-spacing: 0.92px;
+  line-height: 53.8px;
+  margin-top: 21px;
+  min-height: 121px;
+  text-align: center;
+  width: 409px;
+}
+
+.x2-pricing .help-button {
+  align-items: flex-start;
+  border: 1.34px none;
+  display: flex;
+  height: 108px;
+  margin-left: 9.58px;
+  margin-top: 533px;
+  min-width: 169px;
+}
+
+.x2-pricing .overlap-group {
+  height: 109px;
+  margin-top: -1.34px;
+  position: relative;
+  width: 169px;
+}
+
+.x2-pricing .ellipse-1 {
+  background-color: var(--purple-heart);
+  border: 1.34px none;
+  border-radius: 54.17px;
+  height: 108px;
+  left: 30px;
+  position: absolute;
+  top: 1px;
+  width: 108px;
+}
+
+.x2-pricing .text-8 {
+  color: var(--white);
+  font-family: var(--font-family-overpass);
+  font-size: 64.3px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 2.89px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 169px;
+}
