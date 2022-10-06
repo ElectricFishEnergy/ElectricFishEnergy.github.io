@@ -29,7 +29,7 @@
         <div class="flex-row" id="summary-container">
           <div class="flex-col">
             <div class="estimated-range overpass-normal-chicago-17-5px">ESTIMATED RANGE</div>
-            <div class="address overpass-light-black-46-7px">124 mi</div>
+            <div class="address overpass-light-black-46-7px"><span id="est-range">0</span> mi</div>
             <div class="overlap-group">
               <div class="current-power overpass-normal-chicago-17-5px">CURRENT POWER</div>
               <div class="x6000-k-w overpass-light-black-46-7px">00.00 kW</div>
@@ -81,14 +81,6 @@
 
       const send_receipt = () => {
         var email = document.getElementById('email-placeholder').value.toLowerCase();
-        ws_connection.send(JSON.stringify({
-            responseType: 'RESPONSE_OK',
-            type: 'EMAIL_FOR_RECEIPT',
-            data: {
-                email: email
-            }
-        }));
-
         
         document.getElementById('summary-container').classList.remove('hidden');
         document.getElementById('soc-container').classList.remove('hidden');
@@ -144,13 +136,10 @@
         }
       }
       window.onload = () => {
-        ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
-
         document.getElementById('main-container').classList.add('fade-in');
         query_params = new URLSearchParams(window.location.href.split('?')[1]);
 
         for (const [key, value] of query_params) {
-          //console.log(key, value);
           document.getElementById(key).innerHTML = value;
         }
 
