@@ -14,36 +14,10 @@
 
     <script>
       window.onload = () => {
-        document.getElementById('main-container').classList.add('fade-in');  
+        document.getElementById('main-container').onclick = () => {
+          window.location.href = 'https://electricfishenergy.github.io/8-charging';
+        }
       }
-
-      ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
-      ws_connection.onmessage = (event) => {
-        // console.log(event);
-        if(event.data == 'CAR_PLUGGED')
-        {
-          document.getElementById('main-container').classList.add('fade-out');
-          setTimeout(() => {
-            window.location.href = 'https://electricfishenergy.github.io/8-charging';
-          }, 450);
-        }
-        else if(event.data == 'ERROR_GENERAL')
-        {
-          window.location.href = 'https://electricfishenergy.github.io/error';
-        }
-      };
-
-      setTimeout(() => {
-        if(window.location.href.endsWith('7-connect'))
-        {
-          ws_connection.send('UI_TIMEOUT');
-          console.log('session timed out. money will be refunded')
-
-          setTimeout(() => {
-            window.location.href = 'https://electricfishenergy.github.io/1-home'
-          }, 300000);
-        }
-      }, 10000)
     </script>
   </head>
   <body oncontextmenu="return false" style="user-select: none; margin: 0; background: #0f0a18">
@@ -55,6 +29,9 @@
         </div>
         <div class="ensure-car-is-turned-off overpass-normal-white-41-3px">
           <span class="overpass-normal-white-41-3px">ensure car is turned off</span>
+          <br><br>
+          <span><span class="overpass-medium-white-57-8px" style="font-size: 35px">Tap anywhere to simulate car being plugged</span> </span>
+
         </div>
         <div class="flex-row">
           <div class="flex-col">
