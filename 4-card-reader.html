@@ -17,57 +17,25 @@
         document.getElementById('main-container').classList.add('fade-in');  
       }
 
-      const start_payment = () => {
-        ws_connection.send({
-            responseType: "RESPONSE_OK",
-            type: "REQ_START_SESSION"
-        });
-      }
-
       const try_again = () => {
         document.getElementById('std-message').hidden = false;
         document.getElementById('arrow').hidden = false;
         document.getElementById('payment-failed-message').hidden = true;
+      }
 
-        start_payment();
+      const show_popup = () => {
+        document.getElementById('pop-up-message').classList.add('show')
+
+        setTimeout(() => {
+          document.getElementById('main-container').onclick = () => {
+            window.location.href = 'https://electricfishenergy.github.io/5-loading';
+          }
+        }, 500);
       }
 
       const hide_popup = () => {
         document.getElementById('pop-up-message').classList.remove('show')
       }
-
-      ws_connection = new WebSocket('ws://25.83.73.188:80/ws/customer');
-      ws_connection.onmessage = (event) => {
-        console.log(event);
-        if(event.data == 'ECMS_TIMEOUT')
-        {
-            console.log(event.data)
-            window.location.href = 'https://electricfishenergy.github.io/12-out_of_service';
-        }
-        else if(event.data == 'SESSION_STARTED')
-        {
-            document.getElementById('pop-up-message').classList.add('show');
-        }
-        else if(event.data == 'PAYMENT_OK')
-        {
-          document.getElementById('main-container').classList.add('fade-out');
-          document.getElementById('pop-up-message').classList.add('fade-out');
-          setTimeout(() => {
-            window.location.href = 'https://electricfishenergy.github.io/5-loading';
-          }, 450);
-        }
-        else if(event.data == 'PAYMENT_FAILED')
-        {
-          document.getElementById('std-message').hidden = true;
-          document.getElementById('arrow').hidden = true;
-          document.getElementById('payment-failed-message').hidden = false;
-          //console.log('payment failed!')
-        }
-        else if(event.data == 'ERROR_GENERAL')
-        {
-          window.location.href = 'https://electricfishenergy.github.io/error';
-        }
-      };
     </script>
   </head>
   <body oncontextmenu="return false" style="user-select: none; margin: 0; background: #ffffff">
@@ -80,7 +48,7 @@
             src="img/ef-horizontal-logo--black--1-2@2x.png"
             alt="EF horizontal logo (black) 1"
           />
-          <div class="overlap-group" onclick="try_again()">
+          <div class="overlap-group" onclick="show_popup()">
             <div class="price valign-text-middle overpass-light-purple-heart-166-5px">
               <span><span class="overpass-light-purple-heart-166-5px">$10</span> </span>
             </div>
@@ -92,6 +60,8 @@
             <div class="close-button" onclick="hide_popup()"><img class="icon-close" src="img/close-1@2x.png" alt="icon-close" /></div>
             <div class="pop-up-text-container overpass-light-black-64-1px" id="std-message">
               <span class="overpass-light-black-64-1px">use card reader to complete payment</span>
+              <br>
+              <span class="overpass-light-black-64-1px" style="font-size: 35px">Tap anywhere to simulate payment concluded.</span>
             </div>
             <div class="pop-up-text-container" id="payment-failed-message" hidden>
               <div>
