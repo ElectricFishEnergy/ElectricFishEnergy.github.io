@@ -13,7 +13,14 @@
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
 
     <script>
+      var data = {
+        energy: 0,
+        soc: 0,
+        cost: 0
+      }
+
       window.onload = () => {
+        document.getElementById('soc-rectangle').style = 'width: 0px;'
         document.getElementById('main-container').classList.add('fade-in');  
       }
 
@@ -27,9 +34,54 @@
         }
 
         document.getElementById('time-elapsed').innerHTML = `${minutes}:${((seconds >= 10) ? '' : '0') + seconds}`;
+
+        var power = 340 + 10 * Math.random()
+        document.getElementById('power').innerHTML = power.toFixed(1)
+
+        var energy = parseFloat(document.getElementById('energy').textContent) + (power / 3600);
+        document.getElementById('energy').textContent = energy.toFixed(1);
+
+        data['energy'] = energy.toFixed(1);
+
+        if (seconds % 5 == 0)
+        {
+          var cost = parseFloat(document.getElementById('cost').textContent);
+          document.getElementById('cost').textContent = (cost + 0.01).toFixed(2);
+
+          data['cost'] = cost.toFixed(2);
+        }
+
+        if (seconds % 10 == 0)
+        {
+          var soc = document.getElementById('soc').textContent;
+          soc_rect_width = (++soc / 100) * 842;
+          document.getElementById('soc-rectangle').style = `width: ${soc_rect_width}px;`
+
+          document.getElementById('soc').textContent = soc;
+
+          data['soc'] = soc;
+
+          var est_range = parseInt(document.getElementById('est-range').textContent) + 3
+          document.getElementById('est-range').textContent = est_range;
+
+          data['est_range'] = est_range;
+        }
       }, 1000);
 
       const stop = () => {
+        document.getElementById('main-container').classList.add('fade-out');  
+
+        setTimeout(() => {
+          window.location.href = 'https://electricfishenergy.github.io/10-complete?' + 
+                                  'energy='         + data['energy']    + 
+                                  '&soc='           + data['soc']       +
+                                  '&cost='          + data['cost']      +
+                                  '&est-range='     + data['est_range'] +
+                                  '&time-elapsed='  + document.getElementById('time-elapsed').innerHTML;
+        }, 450);
+      }
+
+      /* const stop = () => {
         ws_connection.send('UI_SESSION_STOPPED');
 
         document.getElementById('main-container').classList.add('fade-out');  
@@ -68,7 +120,7 @@
           soc_rect_width = (data['soc'] / 100) * 842;
           document.getElementById('soc-rectangle').style = `width: ${soc_rect_width}px;`
         }
-      }
+      } */
     </script>
   </head>
   <body oncontextmenu="return false" style="user-select: none; margin: 0">
