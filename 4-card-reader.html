@@ -17,15 +17,20 @@
         document.getElementById('main-container').classList.add('fade-in');  
       }
 
+      const help = () => {
+        window.location.href = 'http://25.83.73.188:80/customer/help';
+      }
+
       const try_again = () => {
         document.getElementById('std-message').hidden = false;
         document.getElementById('arrow').hidden = false;
         document.getElementById('payment-failed-message').hidden = true;
+
+        show_popup()
       }
 
       const show_popup = () => {
         document.getElementById('pop-up-message').classList.add('show')
-
         setTimeout(() => {
           document.getElementById('main-container').onclick = () => {
             window.location.href = 'https://electricfishenergy.github.io/5-loading';
@@ -41,27 +46,56 @@
   <body oncontextmenu="return false" style="user-select: none; margin: 0; background: #ffffff">
     <input type="hidden" id="anPageName" name="page" value="4-card-reader" />
     <div class="container-center-horizontal">
-      <div class="x4-card-reader screen">
-        <div class="overlap-group1" id="main-container">
+      <div class="container-center-horizontal">
+        <div id="main-container" class="x4-card-reader overpass-extra-light-granite-gray-28px screen overlap-group2">
+          <!-- <div class="overlap-group2"> -->
           <img
             class="ef-horizontal-logo-black-1"
-            src="img/ef-horizontal-logo--black--1-2@2x.png"
+            src="img/ef-horizontal-logo--black--1-1@2x.png"
             alt="EF horizontal logo (black) 1"
           />
-          <div class="overlap-group" onclick="show_popup()">
-            <div class="price valign-text-middle overpass-light-purple-heart-166-5px">
+          <!-- <div class="overlap-group1" onclick="redirect_to_card_reader()">
+            <h1 class="price valign-text-middle overpass-light-purple-heart-166-5px">
               <span><span class="overpass-light-purple-heart-166-5px">$10</span> </span>
-            </div>
+            </h1>
             <div class="fast-charging-session barlow-light-cinder-46-1px">
               <span class="barlow-light-cinder-46-1px">Fast Charging Session</span>
             </div>
+          </div> -->
+          <img class="ccs-port" src="img/ccs-port@2x.svg" alt="ccs port" />
+          <div class="ccs-charging valign-text-middle">CCS CHARGING</div>
+          <div class="overlap-group3">
+            <div class="k-w valign-text-middle">kW</div>
+            <div class="number valign-text-middle">350</div>
           </div>
-          <div class="overlap-group2" id="pop-up-message">
+          <div class="fast-charging-session valign-text-middle">FAST CHARGING SESSION</div>
+          <div class="overlap-group4">
+            <div class="overlap-group">
+              <div class="price valign-text-middle">$0.68</div>
+              <div class="k-wh valign-text-middle">/kWh</div>
+            </div>
+            <div class="surname valign-text-middle overpass-extra-light-granite-gray-28px">PRICE PER KILLOWATT HOUR</div>
+          </div>
+          <div class="tap-to-pay" onclick="try_again()">
+            <div class="overlap-group5"><div class="tap-to-pay-1">TAP TO PAY</div></div>
+          </div>
+          <div class="help-button">
+            <div class="overlap-group">
+              <div class="ellipse-1"></div>
+              <div class="text-8" onclick="help()"><span>?</span></div>
+            </div>
+          </div>
+          
+          <div class="overlap-group6" id="pop-up-message">
+          <!-- <div class="overlap-group6" id="pop-up-message"> -->
             <div class="close-button" onclick="hide_popup()"><img class="icon-close" src="img/close-1@2x.png" alt="icon-close" /></div>
-            <div class="pop-up-text-container overpass-light-black-64-1px" id="std-message">
-              <span class="overpass-light-black-64-1px">use card reader to complete payment</span>
-              <br>
-              <span class="overpass-light-black-64-1px" style="font-size: 35px">Tap anywhere to simulate payment concluded.</span>
+            <div class="pop-up-text-container" id="std-message">
+              <div>
+                <span class="overpass-light-black-64-1px">USE CARD READER OR TAP RFID TO COMPLETE PAYMENT</span>
+              </div>
+              <div>
+                <span class="overpass-light-black-64-1px" style="font-size: 35px"><br>Tap anywhere to simulate payment concluded.</span>
+              </div>
             </div>
             <div class="pop-up-text-container" id="payment-failed-message" hidden>
               <div>
@@ -73,8 +107,9 @@
               <img id="arrow" class="group" src="img/group-1@2x.png" alt="Group" />
             </div>
           </div>
+          <!-- </div> -->
         </div>
       </div>
-    </div>
-  </body>
-</html>
+    </body>
+    </html>
+    

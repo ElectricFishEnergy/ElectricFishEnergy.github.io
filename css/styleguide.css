@@ -4,6 +4,7 @@
   --chicago: #575757;
   --cinder: #0f0a18;
   --ebony: #140c22;
+  --granite-gray: #67656d;
   --purple-heart: #6c45e5;
   --screamin-green: #79f18c;
   --white: #ffffff;
@@ -98,4 +99,12 @@
   font-size: var(--font-size-l);
   font-style: normal;
   font-weight: 400;
+}
+
+.overpass-extra-light-granite-gray-28px {
+  color: var(--granite-gray);
+  font-family: var(--font-family-overpass);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 200;
 }

@@ -13,6 +13,17 @@
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
 
     <script>
+      const help = () => {
+        window.location.href = 'https://electricfishenergy.github.io/help';
+      }
+
+      const hide_popup = () => {
+        document.getElementById('pop-up-message').classList.remove('show')
+      }
+
+      const stop_confirmation_prompt = () => {
+        document.getElementById('pop-up-message').classList.add('show');
+      }
       var data = {
         energy: 0,
         soc: 0,
@@ -159,16 +170,27 @@
           </div>
         </div>
         <div class="group-8">
-          <div class="overlap-group1" onclick="stop()">
-            <div class="pause-charging valign-text-middle">PAUSE CHARGING</div>
+          <div class="overlap-group1" onclick="stop_confirmation_prompt()">
+            <div class="pause-charging valign-text-middle">STOP CHARGING</div>
           </div>
         </div>
         <div class="help-button">
-          <div class="overlap-group">
+          <div class="overlap-group" onclick="help()">
             <div class="ellipse-1"></div>
             <div class="text-1 overpass-bold-white-63-6px">?</div>
           </div>
         </div>
+
+        <div class="overlap-group6" id="pop-up-message">
+          <div class="close-button" onclick="hide_popup()"><img class="icon-close" src="img/close-1@2x.png" alt="icon-close" /></div>
+            <div class="pop-up-text-container overpass-light-black-64-1px" id="std-message">
+              END CHARGING SESSION?
+            </div>
+            <div class="buttons-container">
+              <div class="valign-text-middle overpass-light-black-64-1px" id="cancel" onclick="hide_popup()">CANCEL</div>
+              <div class="valign-text-middle overpass-light-black-64-1px" id="confirm" onclick="stop()">YES, END CHARGING</div>
+            </div>
+          </div>
       </div>
     </div>
   </body>
